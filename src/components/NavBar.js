@@ -1,10 +1,10 @@
 import React from 'react'
-import {NavDropdown, Navbar, Nav, Container} from 'react-bootstrap';
+import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 
 const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-            <Container>
+      <Container>
                 <Navbar.Brand href="#home">Kubapic</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -21,8 +21,8 @@ const NavBar = () => {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
-        );
+    </Navbar>
+  )
 }
 
 export default NavBar
