@@ -3,7 +3,7 @@ import { GiShoppingCart } from "react-icons/gi";
 
 const CartWidget = () => {
     return (
-        <button>
+         <button>
             <GiShoppingCart />
         </button>
     )

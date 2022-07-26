@@ -2,3 +2,27 @@
   text-align: center;
 }
 
+.count{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: auto;
+  width: 30%;
+  border: 2px solid #d1d6d2 ;
+ 
+}
+
+.btonCount{
+  width: 50%;
+  border:none;
+  outline: none;
+  border-top: 2px solid #d1d6d2;
+}
+
+.btonCart{
+  width: 100%;
+  border:none;
+  outline: none;
+  border-top: 2px solid #d1d6d2;
+  padding: 5px;
+}
