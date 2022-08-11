@@ -7,7 +7,7 @@
   flex-direction: column;
   text-align: center;
   margin: auto;
-  width: 30%;
+  width: 100%;
   border: 2px solid #d1d6d2 ;
  
 }
@@ -41,4 +41,25 @@
   width: auto;
   border: 2px solid #dafce1;
   margin: 20px;
+}
+
+.detail{
+  display: flex;
+  flex-direction: column;
+  width:fit-content;
+  border: 2px solid #dafce1;
+  margin: 20px auto; 
+  padding: 20px;
+  width: 60%;
+  background-color: white;
+}
+
+.product{
+  display: flex;
+  margin: 20px;
+}
+
+.imgDetail{
+  width: 80%;
+  margin: auto;
 }

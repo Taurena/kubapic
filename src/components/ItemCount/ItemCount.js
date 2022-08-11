@@ -9,14 +9,13 @@ const ItemCount = ({initial, stock}) => {
     const increase = () => count < stock ? setCount(count + 1) : count
 
     const onAdd = (count) => {
-        alert("Se han agregado al carrito " + count + " producto/s")
+        alert("Se ha/n agregado al carrito " + count + " producto/s")
         console.log(count)
         setCount(0)
     }
 
     return (
         <div className='count'>
-            <h2>Producto</h2>
             <div>
                 <div >
                     <div>
