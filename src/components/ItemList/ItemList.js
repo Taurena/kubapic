@@ -1,12 +1,14 @@
 import React from 'react'
 import Item from '../Item/Item'
-const ItemList = ({listProduct}) => {
-  
+import Loading from '../Loading/Loading'
+const ItemList = ({listProduct, loading}) => { 
   return (
     
-    <div className="itemList">
-        {listProduct.map(product => <Item key={product.id} product={product}/>)}
-    </div> 
+    <section className="itemList"> 
+     { loading? <Loading/> 
+        : listProduct.map(product => <Item key={product.id} product={product}/>)
+    }
+    </section> 
   )
 }
 

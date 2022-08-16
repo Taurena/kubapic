@@ -15,7 +15,14 @@ const ItemDetail = ({detail, loading}) => {
             </div>
             <div className='productDetail'>
               <h2>{detail.name}</h2>
-              <p className="fw-bold fs-3">{"$" + detail.price}</p>
+              <p>color del marco</p>
+              <select className='form-select' aria-label="Default select example">
+                <option selected>seleccion de color</option>
+                <option value="1">Blanco</option>
+                <option value="2">Negro</option>
+                <option value="3">Natural</option>
+              </select>
+              <p className="fw-bold fs-3 p-2">{"$" + detail.price}</p>
               <p> Ver formas de pago</p>
               <div>
                 <ItemCount stock={detail.stock} detail={detail} initial={1}/>
