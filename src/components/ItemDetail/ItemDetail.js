@@ -16,7 +16,7 @@ const ItemDetail = ({detail, loading}) => {
     console.log(select)
     setCount(0)
     }
-    
+
   return (
     <div>
       {loading ? <Loading/>
@@ -37,7 +37,7 @@ const ItemDetail = ({detail, loading}) => {
               <p className="fw-bold fs-3 p-2">{"$" + detail.price}</p>
               <p> Ver formas de pago</p>
               <div>
-                <ItemCount stock={detail.stock} count={count} setCount={setCount} detail={detail} onAdd={onAdd} inCart={inCart}/>
+                <ItemCount stock={detail.stock} count={count} setCount={setCount}gi onAdd={onAdd} inCart={inCart}/>
               </div>
             </div>
         </div>
