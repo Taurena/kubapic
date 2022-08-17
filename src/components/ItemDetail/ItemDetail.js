@@ -2,8 +2,20 @@ import React from 'react';
 import '../../App.css';
 import ItemCount from '../ItemCount/ItemCount';
 import Loading from '../Loading/Loading';
+import { useState } from 'react';
 
 const ItemDetail = ({detail, loading}) => {
+
+  const [count, setCount] = useState(1);
+  const [inCart, setIncart] = useState(true);
+
+  const onAdd = (count) => {
+    setIncart (false)
+    alert("Se ha/n agregado al carrito " + count + " producto/s de " + detail.name)
+    const select = {... detail, count}
+    console.log(select)
+    setCount(0)
+    }
     
   return (
     <div>
@@ -25,7 +37,7 @@ const ItemDetail = ({detail, loading}) => {
               <p className="fw-bold fs-3 p-2">{"$" + detail.price}</p>
               <p> Ver formas de pago</p>
               <div>
-                <ItemCount stock={detail.stock} detail={detail} initial={1}/>
+                <ItemCount stock={detail.stock} count={count} setCount={setCount} detail={detail} onAdd={onAdd} inCart={inCart}/>
               </div>
             </div>
         </div>

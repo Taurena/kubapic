@@ -52,7 +52,7 @@ export const products = [
 
     {
         id: 6,
-        name: 'Mayo Spirit Trek',
+        name: 'Cerro Negro',
         categoryId: 'Calafate',
         price: 300,
         stock: 10,

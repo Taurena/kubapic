@@ -1,27 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import {Link} from 'react-router-dom'
+const ItemCount = ({stock, count, setCount, onAdd, inCart }) => {
 
-const ItemCount = ({initial, stock}) => {
-
-    const [count, setCount] = useState(initial);
-    const decrease = () => count > initial ? setCount(count - 1) : initial
+    const decrease = () => count > 1 ? setCount(count - 1) : 1
     const increase = () => count < stock ? setCount(count + 1) : count
-    const onAdd = (count) => {
-        alert("Se ha/n agregado al carrito " + count + " producto/s")
-        console.log(count)
-        setCount(0)
-    }
 
     return (
-        <div className='count'>
-            <div>
-                <h3>{count}</h3>
-                <button className='btonCount' onClick={decrease}> - </button>
-                <button className='btonCount' onClick={increase}> + </button>
-            </div>
-            <div>
-                <button className='btonCart' onClick={() => onAdd(count)} >Agregar al carrito</button>
-            </div>
-        </div>
+        <section className='count'>
+            {inCart ?
+                <div>
+                    <div>
+                        <h3>{count}</h3>
+                        <button className='btonCount' onClick={decrease}> - </button>
+                        <button className='btonCount' onClick={increase}> + </button>
+                    </div>
+                    <div>
+                        <button className='btonCart' onClick={()=>onAdd(count)} >Agregar al carrito</button>
+                    </div> 
+                </div>:
+                <div>    
+                    <button className='btonCart'>
+                        <Link to={`/cart`}> Terminar mi Compra </Link>
+                    </button>
+                </div>
+                }
+        </section>
     )
 }
 
