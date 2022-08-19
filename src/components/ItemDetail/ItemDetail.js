@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../../App.css';
 import ItemCount from '../ItemCount/ItemCount';
 import Loading from '../Loading/Loading';
 import { useState } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const ItemDetail = ({detail, loading}) => {
 
   const [count, setCount] = useState(1);
   const [inCart, setIncart] = useState(true);
+  
+  const {isInCart, addItem, getItemQty } =useContext(CartContext)
 
-  const onAdd = (count) => {
-    setIncart (false)
-    alert("Se ha/n agregado al carrito " + count + " producto/s de " + detail.name)
-    const select = {... detail, count}
-    console.log(select)
-    setCount(0)
-    }
+  const onAdd = () => {
+  setIncart (false)
+  alert("Se ha/n agregado al carrito " + count + " producto/s de " + detail.name)
+  isInCart(detail, count)
+  addItem(detail, count)
+  getItemQty(count)  
+  setCount(1)
+  }
 
   return (
     <div>
@@ -37,7 +41,7 @@ const ItemDetail = ({detail, loading}) => {
               <p className="fw-bold fs-3 p-2">{"$" + detail.price}</p>
               <p> Ver formas de pago</p>
               <div>
-                <ItemCount stock={detail.stock} count={count} setCount={setCount}gi onAdd={onAdd} inCart={inCart}/>
+                <ItemCount stock={detail.stock} count={count} setCount={setCount} onAdd={onAdd} inCart={inCart}/>
               </div>
             </div>
         </div>
@@ -47,7 +51,6 @@ const ItemDetail = ({detail, loading}) => {
       </div>
       }  
     </div>
-    
   )
 }
 

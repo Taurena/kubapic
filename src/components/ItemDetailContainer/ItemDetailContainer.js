@@ -25,7 +25,7 @@ function ItemDetailContainer () {
         .catch((err) => {
           console.log(err);
         });
-    },[]);
+    },[id]);
   return (
     <div>
       <ItemDetail detail={detail} loading={loading}/>

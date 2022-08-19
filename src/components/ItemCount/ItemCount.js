@@ -7,7 +7,6 @@ const ItemCount = ({stock, count, setCount, onAdd, inCart }) => {
 
     return (
         <section className='count'>
-            {inCart ?
                 <div>
                     <div>
                         <h3>{count}</h3>
@@ -17,7 +16,8 @@ const ItemCount = ({stock, count, setCount, onAdd, inCart }) => {
                     <div>
                         <button className='btonCart' onClick={()=>onAdd(count)} >Agregar al carrito</button>
                     </div> 
-                </div>:
+                </div>
+                {inCart ? null :
                 <div>    
                     <button className='btonCart'>
                         <Link to={`/cart`}> Terminar mi Compra </Link>
