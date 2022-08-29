@@ -19,6 +19,7 @@ const ItemDetail = ({detail, loading}) => {
   addItem(detail, count)
   getItemQty(count)  
   setCount(1)
+  console.log(detail, count)
   }
 
   return (

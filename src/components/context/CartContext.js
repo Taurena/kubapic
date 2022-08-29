@@ -17,9 +17,11 @@ const MyProvider = ({children}) => {
         if (isInCart(select.id)){
             const findItem = cart.find(x=>x.id==select.id)
             const productId = cart.indexOf(findItem)
+            console.log(select)
             const newCart = [...cart]
             newCart[productId].count += count
-            setCart(newCart)
+            setCart(cart)
+
         }else{
             const array= [...cart, select]
             setCart(array)

@@ -1,5 +1,5 @@
 
-export const products = [
+/*export const products = [
     {
         id: 1,
         name: 'Zorro gris patagónico',
@@ -117,4 +117,4 @@ export const products = [
         img: 'https://i.ibb.co/zsWVYR2/85A4488.jpg',
         data: '15% DE DESCUENTO ABONANDO POR TRANSFERENCIA / DEPÓSITO. ESTA FOTOGRAFÍA ES DE NUESTRA AUTORÍA. Todos nuestros cuadros vienen LISTOS PARA COLGAR, están realizados con madera de marupá (varilla de 2cm), tapa trasera de MDF, lámina alto gramaje, vidrio de 2mm y soporte para colgar. Los cuadros son hechos exclusivamente para vos, por lo que la demora de producción es de 5 a 10 días hábiles, una vez pasado este tiempo el pedido será despachado y te llegará POR MAIL el número de seguimiento correspondiente.'
     } 
-    ]
+    ]*/

@@ -1,9 +1,9 @@
 import React from 'react';
-import {customFetch} from '../../assets/customFetch';
-import {products} from '../../assets/products';
 import {useEffect, useState} from 'react';
 import ItemList from '../ItemList/ItemList';
 import {useParams} from 'react-router-dom';
+import { collection, query, where, getDocs} from "firebase/firestore"
+import { db } from "../../firebase"
 
 const ItemListContainer = ({greeting}) => {
   const [listProduct, setlistProduct] =useState([])
@@ -11,17 +11,42 @@ const ItemListContainer = ({greeting}) => {
   const {categoryId} = useParams ()
 
   useEffect(()=>{
-    customFetch(products)
-      .then((data) =>{
-        if (categoryId) {
-          const filt = data.filter((products) => products.categoryId == categoryId);
-            return setlistProduct(filt); 
-         } else {
-          setlistProduct(data)
-          setLoading(false);
-          }
-        })
-    },[categoryId]);
+
+    const productsCollection=collection(db, "products")
+ if(!categoryId) {  
+ const consulta =getDocs(productsCollection)
+
+    consulta
+    .then(data=>{
+      const products=data.docs.map(doc=>{
+        return {
+          ...doc.data(),
+          id: doc.id
+        }
+      })
+      setlistProduct (products)
+      setLoading(false);
+    })
+    .catch(err=>{
+      console.log(err)
+  })
+  }else{
+    const filter = query(productsCollection,
+      where("categoryId","==",categoryId))
+  const consulta = getDocs(filter)
+  consulta
+            .then(snapshot=>{
+                const products = snapshot.docs.map(doc=>{
+                    return {
+                        ...doc.data(),
+                        id: doc.id
+                    }
+                })
+                setlistProduct(products)
+                setLoading(false)
+            })
+  }
+   },[categoryId]);
 
   return (
     <>

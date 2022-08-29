@@ -1,31 +1,32 @@
 import React from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import {useEffect, useState} from "react";
-import {products} from '../../assets/products';
 import {useParams} from 'react-router-dom';
-
+import {db} from "../../firebase"
+import {collection, getDoc, doc} from 'firebase/firestore'
 
 function ItemDetailContainer () {
 
     const [detail, setDetail] =useState([]);
     const [loading, setLoading] =useState(true)
-    
     const {id} = useParams();
     useEffect(() => {
-      const getItem = new Promise((resolve, reject) => {
+  
+        const productosCollection = collection(db, "products") 
+        const item = doc(productosCollection, id) 
+        const consulta = getDoc(item) 
         setTimeout(() => {
-          resolve(products);
-        }, 2000);
-      });
-      getItem
-        .then((result) => {  
-          setDetail(result.find(item=>item.id==id));
-          setLoading (false)
+        consulta
+        .then((res)=>{
+            setDetail(res.data())
+            setLoading(false)
         })
         .catch((err) => {
-          console.log(err);
-        });
+            console.log(err)
+        })
+      }, 1000);
     },[id]);
+
   return (
     <div>
       <ItemDetail detail={detail} loading={loading}/>
