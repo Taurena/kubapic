@@ -4,7 +4,7 @@ const ItemCount = ({stock, count, setCount, onAdd, inCart }) => {
 
     const decrease = () => count > 1 ? setCount(count - 1) : 1
     const increase = () => count < stock ? setCount(count + 1) : count
-
+    
     return (
         <section className='count'>
                 <div>

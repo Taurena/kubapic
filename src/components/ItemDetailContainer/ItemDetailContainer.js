@@ -18,7 +18,8 @@ function ItemDetailContainer () {
         setTimeout(() => {
         consulta
         .then((res)=>{
-            setDetail(res.data())
+          const det={...res.data(), id: res.id}
+            setDetail(det)
             setLoading(false)
         })
         .catch((err) => {

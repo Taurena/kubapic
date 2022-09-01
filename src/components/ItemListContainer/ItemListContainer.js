@@ -11,11 +11,9 @@ const ItemListContainer = ({greeting}) => {
   const {categoryId} = useParams ()
 
   useEffect(()=>{
-
     const productsCollection=collection(db, "products")
- if(!categoryId) {  
- const consulta =getDocs(productsCollection)
-
+    if(!categoryId) {  
+    const consulta =getDocs(productsCollection)
     consulta
     .then(data=>{
       const products=data.docs.map(doc=>{
@@ -35,18 +33,17 @@ const ItemListContainer = ({greeting}) => {
       where("categoryId","==",categoryId))
   const consulta = getDocs(filter)
   consulta
-            .then(snapshot=>{
-                const products = snapshot.docs.map(doc=>{
-                    return {
-                        ...doc.data(),
-                        id: doc.id
-                    }
-                })
-                setlistProduct(products)
-                setLoading(false)
-            })
-  }
-   },[categoryId]);
+    .then(snapshot=>{
+      const products = snapshot.docs.map(doc=>{
+        return {
+          ...doc.data(),
+          id: doc.id
+          }
+        })
+        setlistProduct(products)
+        setLoading(false)
+        })
+  }},[categoryId]);
 
   return (
     <>

@@ -63,3 +63,11 @@
   width: 80%;
   margin: auto;
 }
+
+.form{
+  text-align: center;
+  width: 70%;
+  justify-content: center;
+  align-self: center;
+  margin: auto;
+}
