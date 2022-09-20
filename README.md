@@ -1,7 +1,7 @@
 # Kubapic
 
 ## Descripcion 🦄
-El proyecto consiste en una pagina e-commerce dedicada a la venta de cuadros.  No edité las imagenes para que fueran acorde a la tematica, use las fotos que tenía de mis vacaciones para no utilizar imagenes que pudieran tener derechos de autor. 
+El proyecto consiste en una página e-commerce dedicada a la venta de cuadros. No edité las imágenes para que fueran acorde a la temática, usé las fotos que tenía de mis vacaciones para no utilizar imágenes que pudieran tener derechos de autor. 
 
 ---
 ## Tecnologías y librerias utilizadas🌺
