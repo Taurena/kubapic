@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import {useEffect, useState} from "react";
 import {useParams} from 'react-router-dom';
 import {db} from "../../firebase"
 import {collection, getDoc, doc} from 'firebase/firestore'
+import Swal from 'sweetalert2';
+
 
 function ItemDetailContainer () {
 
@@ -11,27 +12,29 @@ function ItemDetailContainer () {
     const [loading, setLoading] =useState(true)
     const {id} = useParams();
     useEffect(() => {
-  
-        const productosCollection = collection(db, "products") 
+        const productosCollection = collection(db, 'products') 
         const item = doc(productosCollection, id) 
-        const consulta = getDoc(item) 
+        const list = getDoc(item) 
+
         setTimeout(() => {
-        consulta
+        list
         .then((res)=>{
           const det={...res.data(), id: res.id}
             setDetail(det)
             setLoading(false)
         })
         .catch((err) => {
-            console.log(err)
+          Swal.fire('Ocurrio un error')
         })
       }, 1000);
     },[id]);
 
   return (
-    <div>
-      <ItemDetail detail={detail} loading={loading}/>
-    </div>
+    <main>
+      <ItemDetail 
+        detail={detail} 
+        loading={loading}/>
+    </main>
   );
 };
 export default ItemDetailContainer;

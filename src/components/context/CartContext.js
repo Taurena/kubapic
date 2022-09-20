@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import React, { createContext, useState } from 'react'
 
 export const CartContext = createContext()
 
@@ -13,7 +13,7 @@ const MyProvider = ({children}) => {
     const addItem=(detail, count)=>{
         const select = {...detail, count}
         if (isInCart(select.id)){
-            const findItem = cart.find(x=>x.id==select.id)
+            const findItem = cart.find(x=>x.id===select.id)
             const productId = cart.indexOf(findItem)
             const newCart = [...cart]
             newCart[productId].count += count

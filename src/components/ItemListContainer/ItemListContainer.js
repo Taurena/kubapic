@@ -1,9 +1,10 @@
-import React from 'react';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ItemList from '../ItemList/ItemList';
 import {useParams} from 'react-router-dom';
-import { collection, query, where, getDocs} from "firebase/firestore"
-import { db } from "../../firebase"
+import { collection, query, where, getDocs} from 'firebase/firestore';
+import { db } from '../../firebase';
+import Template from '../Template/Template';
+import Swal from 'sweetalert2'
 
 const ItemListContainer = ({greeting}) => {
   const [listProduct, setlistProduct] =useState([])
@@ -11,10 +12,11 @@ const ItemListContainer = ({greeting}) => {
   const {categoryId} = useParams ()
 
   useEffect(()=>{
-    const productsCollection=collection(db, "products")
+    const productsCollection=collection(db, 'products')
+    
     if(!categoryId) {  
-    const consulta =getDocs(productsCollection)
-    consulta
+    const list =getDocs(productsCollection)
+    list
     .then(data=>{
       const products=data.docs.map(doc=>{
         return {
@@ -26,15 +28,15 @@ const ItemListContainer = ({greeting}) => {
       setLoading(false);
     })
     .catch(err=>{
-      console.log(err)
+      Swal.fire('Ocurrio un error')
   })
   }else{
     const filter = query(productsCollection,
       where("categoryId","==",categoryId))
-  const consulta = getDocs(filter)
-  consulta
-    .then(snapshot=>{
-      const products = snapshot.docs.map(doc=>{
+  const list = getDocs(filter)
+  list
+    .then(data=>{
+      const products = data.docs.map(doc=>{
         return {
           ...doc.data(),
           id: doc.id
@@ -43,13 +45,17 @@ const ItemListContainer = ({greeting}) => {
         setlistProduct(products)
         setLoading(false)
         })
+    .catch(err=>{
+      Swal.fire('Ocurrio un error')
+    })
   }},[categoryId]);
 
   return (
-    <>
-      <h1 className='text-center'>{greeting} </h1>
-      <ItemList listProduct={listProduct} loading={loading}/>
-    </>
+    <Template title= 'Catalogo' subtitle={categoryId}>
+      <ItemList 
+        listProduct={listProduct} 
+        loading={loading}/>
+    </Template>
   )
 }
 

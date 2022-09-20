@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Cart from './components/Cart/Cart';
 import MyProvider from './components/context/CartContext';
 import Checkout from './components/Checkout/Checkout';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -14,12 +15,13 @@ function App() {
     <MyProvider>
       <NavBar/>
       <Routes>
-          <Route path="/" element={<ItemListContainer greeting={'Bienvenido'}/>}/>
-          <Route path="/item/:id" element={<ItemDetailContainer/>} />
-          <Route path="/category/:categoryId" element={<ItemListContainer/>} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/checkout" element={<Checkout/>}></Route>
+          <Route path='/' element={<ItemListContainer greeting={'Bienvenido'}/>}/>
+          <Route path='/item/:id' element={<ItemDetailContainer/>} />
+          <Route path='/category/:categoryId' element={<ItemListContainer/>} />
+          <Route path='/cart' element={<Cart/>} />
+          <Route path='/checkout' element={<Checkout/>}></Route>
       </Routes>
+      <Footer/>
     </MyProvider>
     </BrowserRouter>
   );

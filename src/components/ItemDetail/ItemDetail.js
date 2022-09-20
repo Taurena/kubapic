@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
-import '../../App.css';
 import ItemCount from '../ItemCount/ItemCount';
 import Loading from '../Loading/Loading';
 import { CartContext } from '../context/CartContext';
+import Swal from 'sweetalert2'
 
 const ItemDetail = ({detail, loading}) => {
 
@@ -13,7 +13,13 @@ const ItemDetail = ({detail, loading}) => {
  
   const onAdd = () => {
   setIncart (false)
-  alert("Se ha/n agregado al carrito " + count + " producto/s de " + detail.name)
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Se ha/n agregado al carrito ' + count + ' producto/s de ' + detail.name,
+    showConfirmButton: false,
+    timer: 2000
+  })
   isInCart(detail, count)
   addItem(detail, count)
   getItemQty(count)  
@@ -21,34 +27,27 @@ const ItemDetail = ({detail, loading}) => {
   }
 
   return (
-    <div>
+    <div className="min-vh-100">
       {loading ? <Loading/>
-    : <div  key={id} className="justify-content-md-center detail" >
+    : <div  key={id} className="detail" >
+            <img className='imgDetail' src={img} alt={name} />
         <div className='product'>
-            <div>
-              <img className='imgDetail' src={img} alt={name} />
-            </div>
-            <div className='productDetail'>
-              <h2>{name}</h2>
-              <p>color del marco</p>
-              <select className='form-select' aria-label="Default select example">
-                <option selected>seleccion de color</option>
-                <option value="1">Blanco</option>
-                <option value="2">Negro</option>
-                <option value="3">Natural</option>
-              </select>
-              <p className="fw-bold fs-3 p-2">{"$" + price}</p>
-              <p> Ver formas de pago</p>
-              <div>
-                <ItemCount stock={stock} onAdd={onAdd} count={count} setCount={setCount} inCart={inCart}/>
-              </div>
-            </div>
-        </div>
-        <div className="text-center">
-          <p>{data}</p>
-        </div>
+          <h2>{name}</h2>
+          <h3>{"$" + price}</h3>
+            <p> Ver formas de pago</p>
+          <div>
+            <ItemCount 
+              stock={stock} 
+              onAdd={onAdd} 
+              count={count} 
+              setCount={setCount} 
+              inCart={inCart}/>
+          </div>
+          <hr/>
+            <p>{data}</p>
+        </div> 
       </div>
-      }  
+      }
     </div>
   )
 }

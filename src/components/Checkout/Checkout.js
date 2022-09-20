@@ -1,13 +1,14 @@
+import React, { useState, useContext} from 'react'
 import { addDoc, serverTimestamp, collection } from 'firebase/firestore'
 import {db} from '../../firebase'
-import { useState, useContext} from 'react'
-import { useNavigate } from 'react-router-dom'
-import { CartContext } from '../context/CartContext'
-import {Button, Card} from 'react-bootstrap';
+import { CartContext} from '../context/CartContext'
+import {Button, Form,} from 'react-bootstrap';
+import Swal from 'sweetalert2'
+import Template from '../Template/Template';
 
 const Checkout = () => {
 
-    const {cart, getItemPrice, clear}=useContext(CartContext)
+    const {cart, getItemPrice}=useContext(CartContext)
     const [submit, setSubmit] = useState(false)
     const [id, setId]= useState()
     const [costumer, setCostumer] = useState({
@@ -31,50 +32,65 @@ const Checkout = () => {
             price: getItemPrice(),
             date: serverTimestamp()
         }
+
         setSubmit(true)
 
         const ordersCollection = collection(db, "orders")
         const nOrder = addDoc (ordersCollection, order)
         nOrder
             .then((res)=>{
-                console.log(res.id)
                 setId(res.id)
+                Swal.fire({
+                    icon: 'info',
+                    html: costumer.name + ', tu compra se ha realizado con exito. El ID de tu compra es #' + res.id,
+                    showConfirmButton: false,
+                    footer: '<a href="/"}> Volver al home </a>',
+                    allowOutsideClick: false
+                    })
             })
+            
             .catch(err=>{
-                console.log(err)
+                Swal.fire('Ocurrio un error')
             })
-        clear()    
     }
-
-    const navigate = useNavigate();
     
   return (
-    <div>
-        { !submit ? 
-        <div className='form'>
-        <h2>Completar datos</h2>
-        <form className="row align-items-start form-floating" onSubmit={handlerSubmit}>
-            <input placeholder='Nombre' name='name' value={costumer.name} onChange={handlerChangeInput}></input>
-            <input placeholder='Apellido' name='lastname' value={costumer.lastname} onChange={handlerChangeInput}></input>
-            <input placeholder='Correo electronico' name='email' value={costumer.email} onChange={handlerChangeInput}></input>
-            <input placeholder='Domicilio' name='address' value={costumer.address} onChange={handlerChangeInput}></input>
-            <Button type='submit' variant="outline-secondary" >confirmar compra</Button>
-        </form>
-        </div> 
-        :
-        <Card className="text-center">
-            <Card.Header>Checkout</Card.Header>
-            <Card.Body>
-                <Card.Title>{costumer.name} {costumer.lastname} tu compra ha sido realizada con exito!</Card.Title>
-                <Card.Text>
-                El ID de tu compra es {id}
-                </Card.Text>
-                <Button onClick={() => navigate('/')} variant="outline-secondary" >
-                Volver al Home
-                </Button>
-            </Card.Body>
-        </Card>
-    } </div>
+    <Template title='Finaliza tu compra'>
+        <Form className="form" onSubmit={handlerSubmit}>
+            <h2>Completar datos</h2>
+            <Form.Group className='input'>
+                <Form.Control 
+                    type='text'
+                    required
+                    placeholder='Nombre' 
+                    name='name' 
+                    value={costumer.name} 
+                    onChange={handlerChangeInput}/>
+                <Form.Control 
+                    type='text'
+                    required
+                    placeholder='Apellido' 
+                    name='lastname' 
+                    value={costumer.lastname} 
+                    onChange={handlerChangeInput}/>
+                <Form.Control 
+                    type="email"
+                    required
+                    placeholder='Correo electronico' 
+                    name='email' 
+                    value={costumer.email} 
+                    onChange={handlerChangeInput}/>
+                <Form.Control 
+                    type='text'
+                    required
+                    placeholder='Domicilio' 
+                    name='address' 
+                    value={costumer.address} 
+                    onChange={handlerChangeInput}/>
+            </Form.Group>
+            <Button type='submit' variant="outline-secondary">confirmar compra</Button>
+        </Form>
+    </Template>
   )
 }
 

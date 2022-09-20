@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Kubapic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Descripcion 🦄
+El proyecto consiste en una pagina e-commerce dedicada a la venta de cuadros.  No edité las imagenes para que fueran acorde a la tematica, use las fotos que tenia a mi para no utilizar imagenes que pudieran tener derecho de autor. 
 
-## Available Scripts
+---
+## Tecnologías y librerias utilizadas🌺
 
-In the project directory, you can run:
+- React 
+- Css 
+- Javascript
+- react-router-dom 
+- Firebase 
+- react Bootstrap
+- sweetalert2
 
-### `npm start`
+---
+## Clonar repositorio 🐣
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ * Ir a la página principal del repositorio.  
+ * Copiar la dirección URL del repositorio que aparece en "Code". O bien, copiar el siguiente URL.   
+   https://github.com/Taurena/kubapic.git
+ * Abrir Git Bash o la terminal de preferencia. 
+ * Posicionarse en el directorio de trabajo actual a la ubicación en donde quieres clonar el directorio.
+ * Escriba git clone y pegue la dirección URL que ha copiado antes.  
+  $ git clone https://github.com/Taurena/kubapic.git
+ * Presionar **Enter** para crear el clon local.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+## Instalar dependencias🌹
 
-### `npm test`
+ Desde de carpeta del proyecto, ejecutar los siguientes comandos:  
+* npm install
+* npm install react-bootstrap bootstrap
+* npm install react-icons --save
+* npm install react-router-dom
+* npm install react react-dom
+* npm install sweetalert2
+* npm install firebase
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+## Ejecutar proyecto 🌱
 
-### `npm run build`
+* Ejecuta el siguiente comando para iniciar el proyecto.  
+ $ npm start
+* Abrir http://localhost:3000 en el navegador si este no se inicia automaticamente.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
+## Demo 🦊
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ El proyecto deberia funcionar de la siguiente manera.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+https://user-images.githubusercontent.com/87957451/191150760-dc7403d4-11a0-47e8-9a4e-a7d7b613edef.mp4
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## Autor🌸
+Silvana Vega
